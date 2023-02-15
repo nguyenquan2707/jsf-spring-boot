@@ -1,1 +1,1 @@
-# jsf-spring-boot
+# JSF and Primefaces on Spring Boot 3
