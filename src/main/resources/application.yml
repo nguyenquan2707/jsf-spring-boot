@@ -8,7 +8,6 @@ spring:
       enabled: true
       uri: http://localhost:8001
       name: jsf-spring-boot
-      label: develop
 
 server:
   port: 8000
