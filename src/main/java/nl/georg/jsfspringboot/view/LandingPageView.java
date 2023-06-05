@@ -8,6 +8,6 @@ import jakarta.inject.Named;
 public class LandingPageView {
 
     public String getMessage() {
-        return "Landing Page Message";
+        return "message";
     }
 }

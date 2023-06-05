@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -20,7 +20,10 @@
         <java.version>17</java.version>
 
         <!-- compile library versions -->
-        <joinfaces.version>5.0.2</joinfaces.version>
+        <spring.cloud.starter.config.version>4.0.3</spring.cloud.starter.config.version>
+        <spring.cloud.version>2022.0.3</spring.cloud.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
+        <joinfaces.version>5.1.0</joinfaces.version>
         <maven.model.version>3.9.0</maven.model.version>
         <mapstruct.version>1.5.2.Final</mapstruct.version>
         <lombok.version>1.18.26</lombok.version>
@@ -42,6 +45,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -49,6 +59,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
         </dependency>
 
         <!-- JoinFaces -->
@@ -121,6 +141,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                         <failOnWarning>false</failOnWarning>
                         <failOnError>true</failOnError>
                         <showDeprecation>true</showDeprecation>
@@ -167,4 +189,28 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <properties>
+                <activatedProperties>develop</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <activatedProperties>production</activatedProperties>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <activatedProperties>test</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
 </project>

@@ -1,3 +1,13 @@
 spring:
   application:
     name: jsf-spring-boot
+  config:
+    import: optional:configserver:http://localhost:8001/
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8001
+      name: jsf-spring-boot
+
+server:
+  port: 8000
