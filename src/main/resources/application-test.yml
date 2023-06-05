@@ -1,2 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: test
+
 custom:
   property: local test prop

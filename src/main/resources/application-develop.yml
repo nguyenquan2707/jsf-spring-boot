@@ -1,2 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: develop
+
 custom:
   property: local develop prop

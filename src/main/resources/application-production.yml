@@ -1,2 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: production
+
 custom:
   property: local production prop
