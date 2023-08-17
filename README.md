@@ -1,0 +1,1 @@
+# JSF and Primefaces on Spring Boot 3
